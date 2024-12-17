@@ -1,17 +1,31 @@
-# Minimal example: camera-tools .fitToSphere on page load not working
+# Minimal Example: `camera-tools .fitToSphere` on Page Load Not Working
+
 Hello,
 
-for a project, I want dynamically set the camera settings such that my object - in this example the spaceship - fits into the viewport of my canvas. This should be done both on window resize as well as upon page load. The pan/dollyTo of the camera works for resizing the window as intended. Unfortunately, it does not work for the initial page load: The camera zooms into the center of the ship, such that one can see the ship from inside. Upon resizing the window the camera moves out to fit the ship into view (as intended). By now, I believe to have figured out what the problem is. Implementing the same in 'vanilla' threejs, I experience a similar issue that is resolved by calling `renderer.render` on the scene, prior to calling `.fitToSphere`.
+In my project, I want to dynamically adjust the camera settings so that my object - in this example, the spaceship — fits into the viewport of my canvas. This should work both on **window resize** and **page load**. The pan/dollyTo of the camera works as intended when resizing the window. However, it does not work on the initial page load: the camera zooms into the center of the ship, so the view ends up *inside* the ship. Upon resizing the window, the camera moves out to fit the ship into view (as intended). 
 
-*Does anyone have an idea how to resolve this issue in Threlte?* I have tried things, like putting the `fitToSphere` call into a seperate Task in to an `afterRenderStage` like outlined in the [docs](https://threlte.xyz/docs/learn/basics/scheduling-tasks) - all to noavail.
+After some investigation, I believe I have identified the issue. When implementing the same behavior using "vanilla" Three.js, I encountered a similar problem. This was resolved by calling `renderer.render` on the scene **prior to calling `.fitToSphere`/`fitObject`**.
+
+**Does anyone have an idea how to resolve this issue in Threlte?**  
+I have tried various approaches, such as placing the `fitToSphere` call into a separate task using the `afterRenderStage`, as outlined in the [Threlte documentation](https://threlte.xyz/docs/learn/basics/scheduling-tasks)—all to no avail.
+
+Most of the relevant code is in `Scene.svelte`.
+---
 
 ## Instructions
-1. Clone this repository
-2. Install dependencies. I.e.: `npm i`
-3. Start server (`npm run dev`) and open page in browser
-4. -> the camera is inside of the spaceship. This is the issue i am trying to resolve.
-5. Now resize browser window -> camera moves to display entire spaceship. This is the behavior I would like to have in point 4.
 
-Side note: I am fairly new to Threlte/ThreeJS (and front-end development for that matter). So, I am happy to hear about any kind of bad pratices found in this example.
+1. Clone this repository.
+2. Install dependencies: `npm i`
+3. Start the server: `npm run dev`  
+   Open the page in your browser.
+4. **Observe:** The camera is inside the spaceship. This is the issue I am trying to resolve.
+5. Now **resize the browser window**: The camera moves to display the entire spaceship. This is the behavior I would like to achieve in Step 4.
+
+---
+
+## Side Note
+
+I am fairly new to Threlte/Three.js (and front-end development in general). I would greatly appreciate feedback on any bad practices found in this example.
 
 Thanks a lot!
+
