@@ -13,7 +13,7 @@ Most of the relevant code is in `Scene.svelte`.
 
 ## Instructions
 
-1. Clone this repository.
+1. Clone this [repository](https://github.com/fouf96/threlte-fit-to-sphere).
 2. Install dependencies: `npm i`
 3. Start the server: `npm run dev`  
    Open the page in your browser.
