@@ -10,7 +10,6 @@ After some investigation, I believe I have identified the issue. When implementi
 I have tried various approaches, such as placing the `fitToSphere` call into a separate task using the `afterRenderStage`, as outlined in the [Threlte documentation](https://threlte.xyz/docs/learn/basics/scheduling-tasks)—all to no avail.
 
 Most of the relevant code is in `Scene.svelte`.
----
 
 ## Instructions
 
@@ -23,7 +22,7 @@ Most of the relevant code is in `Scene.svelte`.
 
 ---
 
-## Side Note
+### Side Note
 
 I am fairly new to Threlte/Three.js (and front-end development in general). I would greatly appreciate feedback on any bad practices found in this example.
 
